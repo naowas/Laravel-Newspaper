@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/ionicons.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/menu.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/admin_style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/admin_style.css')}}">
+    <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+
 </head>
 <body>
