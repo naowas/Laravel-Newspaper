@@ -35,5 +35,6 @@ route::group(['prefix' => 'admin'], function () {
 
         Route::get('/', 'adminController@settings')->name('admin.settings');
         Route::post('/store', 'adminController@settingsStore')->name('admin.settings.store');
+        Route::post('/update/{id}', 'adminController@settingsUpdate')->name('admin.settings.update');
     });
 });

@@ -101,6 +101,21 @@ h4{
 .image-gallery img{
 	width:18.7%;
 	margin-right:10px;}	
+
+.social-icon{
+	background: #249bc6;
+	padding: 10px 10px;
+	color: white;
+	font-size: 15px;
+	position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}	
+.top-social{
+	padding-top: 10px;
+}
+
 @media(max-width:420px){
 	
 	body{
