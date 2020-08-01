@@ -37,4 +37,15 @@ route::group(['prefix' => 'admin'], function () {
         Route::post('/store', 'adminController@settingsStore')->name('admin.settings.store');
         Route::post('/update/{id}', 'adminController@settingsUpdate')->name('admin.settings.update');
     });
+
+
+    route::group(['prefix' => 'posts'], function () {
+
+        Route::get('/', 'adminController@posts')->name('admin.posts');
+        Route::get('/create', 'adminController@createPost')->name('admin.post');
+        Route::post('/store', 'adminController@storePost')->name('admin.post.store');
+        Route::post('/update/{id}', 'adminController@updatePost')->name('admin.post.update');
+    });
+
+
 });

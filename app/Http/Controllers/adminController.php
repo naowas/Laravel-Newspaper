@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Category;
 use App\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -14,15 +14,15 @@ class adminController extends Controller
         return view('backend.index');
 
     }
-   //     Array methode
+    //     Array methode
     public function settings()
     {
 
         $settings = Settings::limit(1)->orderBy('id', 'desc')->get();
         $a = Settings::orderBy('id', 'desc')->pluck('social');
         $a = explode(',', $a);
-        $a= str_replace(array('[', ']','"','\\'), '', $a);
-        return view('backend.settings',compact('settings','a'));
+        $a = str_replace(array('[', ']', '"', '\\'), '', $a);
+        return view('backend.settings', compact('settings', 'a'));
     }
     public function settingsStore(Request $request)
     {
@@ -46,7 +46,7 @@ class adminController extends Controller
 
     }
 
-      public function settingsUpdate(Request $request, $id)
+    public function settingsUpdate(Request $request, $id)
     {
 
         $settings = Settings::find($id);
@@ -65,6 +65,13 @@ class adminController extends Controller
         $settings->save();
         session()->flash('success', ' Settings Updated !!');
         return back();
+
+    }
+
+    public function createPost()
+    {
+        $categories = Category::orderBy('id', 'desc')->get();
+        return view('backend.posts.add-post',compact('categories'));
 
     }
 }
