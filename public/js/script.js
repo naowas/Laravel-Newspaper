@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('.fa-bars').click(function(){
 		$('.sidebar').toggle();
-	});		
+	});
 
 	$("#search").keyup(function() {
     	var value = this.value;
@@ -28,14 +28,18 @@ $(document).ready(function(){
 		$('#slug').val(slugify(slug));
 	});
 
-	$('#select-all').click(function(event) {   
+    $('#post_title').keyup(function(){
+        var slug = $(this).val();
+        $('#slug').val(slugify(slug));
+    });
+	$('#select-all').click(function(event) {
 	    if(this.checked) {
 	        $(':checkbox').each(function() {
-	            this.checked = true;                        
+	            this.checked = true;
 	        });
 	    }else{
 	    	$(':checkbox').each(function() {
-	            this.checked = false;                        
+	            this.checked = false;
 	        });
 	    }
 	});

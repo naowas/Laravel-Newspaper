@@ -12,8 +12,11 @@
 				<form method="post">
 					<div class="col-sm-9">
 						<div class="form-group">
-							<input type="text" name="title" class="form-control" placeholder="Enter title here">
+							<input type="text" name="post_title" id="post_title" class="form-control" placeholder="Enter title here">
 						</div>
+                        <div class="form-group">
+                            <input type="text" name="slug" id="slug" class="form-control" placeholder="Enter Slug">
+                        </div>
 						<div class="form-group">
 							<textarea class="form-control" name="description" rows="15"></textarea>
 							<div class="col-sm-12 word-count">Word count: 0</div>
@@ -23,14 +26,14 @@
 						<div class="content publish-box">
 							<h4>Publish  <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>
 							<div class="form-group">
-								<button class="btn btn-default">Save Draft</button>
+								<button class="btn btn-default" name="draft">Save Draft</button>
 							</div>
 							<p>Status: Draft <a href="#">Edit</a></p>
 							<p>Visibility: Public <a href="#">Edit</a></p>
 							<p>Publish: Immediately <a href="#">Edit</a></p>
 							<div class="row">
 								<div class="col-sm-12 main-button">
-									<button class="btn btn-primary pull-right">Publish</button>
+									<button class="btn btn-primary pull-right" name="publish">Publish</button>
 								</div>
 							</div>
 						</div>
@@ -66,9 +69,9 @@
 		})
 	});
 </script>
-<script src="{{asset('/admin/posts/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('ckeditor/ckeditor/ckeditor.js')}}"></script>
 <script>
-	CKEDITOR.replace('description', { "filebrowserBrowseUrl": "..\/posts\/ckfinder\/ckfinder.html", "filebrowserImageBrowseUrl": "..\/posts\/ckfinder\/ckfinder.html?type=Images", "filebrowserFlashBrowseUrl": "..\/posts\/ckfinder\/ckfinder.html?type=Flash", "filebrowserUploadUrl": "..\/posts\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Files", "filebrowserImageUploadUrl": "..\/posts\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Images", "filebrowserFlashUploadUrl": "..\/posts\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Flash" });
+	CKEDITOR.replace('description', { "filebrowserBrowseUrl": "/ckeditor\/ckfinder\/ckfinder.html", "filebrowserImageBrowseUrl": "/ckeditor\/ckfinder\/ckfinder.html?type=Images", "filebrowserFlashBrowseUrl": "/ckeditor\/ckfinder\/ckfinder.html?type=Flash", "filebrowserUploadUrl": "/ckeditor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Files", "filebrowserImageUploadUrl": "/ckeditor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Images", "filebrowserFlashUploadUrl": "/ckeditor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Flash" });
 </script>
 
 <script>
