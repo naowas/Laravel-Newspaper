@@ -41,10 +41,15 @@ route::group(['prefix' => 'admin'], function () {
 
     route::group(['prefix' => 'posts'], function () {
 
-        Route::get('/', 'adminController@posts')->name('admin.posts');
-        Route::get('/create', 'adminController@createPost')->name('admin.post');
-        Route::post('/store', 'adminController@storePost')->name('admin.post.store');
-        Route::post('/update/{id}', 'adminController@updatePost')->name('admin.post.update');
+        Route::get('/', 'PostController@index')->name('admin.posts.index');
+        Route::get('/create', 'PostController@createPost')->name('admin.post');
+        Route::get('/edit/{id}', 'PostController@editPost')->name('admin.post.edit');
+        Route::post('/store', 'PostController@storePost')->name('admin.post.store');
+        Route::post('/update', 'PostController@updatePost')->name('admin.post.update');
+        Route::post('/update/store/{id}', 'PostController@updatePoststore')->name('admin.post.update.store');
+
+        Route::post('/delete', 'PostController@delete')->name('admin.post.delete');
+
     });
 
 

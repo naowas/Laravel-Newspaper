@@ -4,24 +4,24 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-10 title">
-			<h1><i class="fa fa-bars"></i> Add New Post</h1>
+			<h1><i class="fa fa-bars"></i> Edit Post</h1>
 		</div>
 
 		<div class="col-sm-12">
             @include('backend.partials.messages')
 
 			<div class="row">
-				<form  action="{{ route('admin.post.store') }}" method="post" enctype="multipart/form-data">
+				<form  action="{{ route('admin.post.update.store', $edit_post->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="col-sm-9">
 						<div class="form-group">
-							<input type="text" name="post_title" id="post_title" class="form-control" placeholder="Enter title here">
+							<input type="text" name="post_title" id="post_title" class="form-control" value="{{ $edit_post->title }}">
 						</div>
                         <div class="form-group">
-                            <input type="text" name="slug" id="slug" class="form-control" placeholder="Enter Slug">
+                            <input type="text" name="slug" id="slug" class="form-control" value="{{ $edit_post->slug }}">
                         </div>
 						<div class="form-group">
-							<textarea class="form-control" name="description" rows="15"></textarea>
+							<textarea class="form-control" name="description" rows="15">{{ $edit_post->description }}</textarea>
 							<div class="col-sm-12 word-count">Word count: 0</div>
 						</div>
 					</div>
@@ -44,17 +44,28 @@
 						<div class="content cat-content">
                             <h4>Category  <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4><hr>
                             @foreach ($categories as $category)
-                        <p><label for="{{$category->id}}"><input type="checkbox" name="category_id[]" value="{{ $category->id }}">{{$category->category_name}}</label></p>
+                        <p><label for="{{$category->id}}"><input type="checkbox" name="category_id[]" value="{{ $category->id }}"
+                            @if(in_array($category->id,$postcat)) checked @endif>{{$category->category_name}}</label></p>
 							 @endforeach
 
 						</div>
 						<div class="content featured-image">
+                            <h4>Featured Image <span class="pull-right"><i class="fa fa-chevron-down"></i></span></h4>
+                            <hr>
+                            @if($edit_post->image != '')
+                            <p><img src="{{ asset('images/posts/'.$edit_post->image) }}" id="output" style="max-width: 100%"></p>
 							 <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
                                 style="display: none;"></p>
                                   <p><img id="output" width="200" /></p>
-                        <p><label for="file" class="" style="cursor: pointer;">Set Featured Image</label></p>
+                        <p><label for="file" class="" style="cursor: pointer;">Update Featured Image</label></p>
 
-
+                            @else
+                            <p><img id="output" style="max-width: 100%"></p>
+							 <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
+                                style="display: none;"></p>
+                                  <p><img id="output" width="200" /></p>
+                        <p><label for="file" class="" style="cursor: pointer;">Update Featured Image</label></p>
+                            @endif
 						</div>
 					</div>
 				</form>

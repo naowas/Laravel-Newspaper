@@ -67,11 +67,4 @@ class adminController extends Controller
         return back();
 
     }
-
-    public function createPost()
-    {
-        $categories = Category::orderBy('id', 'desc')->get();
-        return view('backend.posts.add-post',compact('categories'));
-
-    }
 }

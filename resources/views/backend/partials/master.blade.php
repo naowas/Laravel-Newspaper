@@ -10,7 +10,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="view-table.html"><i class="fa fa-eye"></i>All Posts</a></li>
+              <li><a href="{{ route('admin.posts.index') }}"><i class="fa fa-eye"></i>All Posts</a></li>
               <li><a href="{{route('admin.post')}}"><i class="fa fa-plus-circle"></i>Add Posts</a></li>
               <li><a href="{{route('admin.categories')}}"><i class="fa fa-plus-circle"></i>Categories</a></li>
             </ul>
