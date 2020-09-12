@@ -43,8 +43,11 @@ class frontController extends Controller
         $technology = DB::table('posts')->where('category_id', 'like', '%4%' )->orderBy('id','desc')->get();
         $health = DB::table('posts')->where('category_id', 'like', '%8%' )->orderBy('id','desc')->get();
         $travel = DB::table('posts')->where('category_id', 'like', '%6%' )->orderBy('id','desc')->get();
-        $entertainment = DB::table('posts')->where('category_id', 'like', '%6%' )->orderBy('id','desc')->get();
-        return view('frontend.index',compact('featured','generel','business','sports','technology','health','travel','entertainment'));
+        $entertainment = DB::table('posts')->where('category_id', 'like', '%3%' )->orderBy('id','desc')->get();
+        $politics = DB::table('posts')->where('category_id', 'like', '%1%' )->orderBy('id','desc')->get();
+        $style = DB::table('posts')->where('category_id', 'like', '%7%' )->orderBy('id','desc')->get();
+        return view('frontend.index',compact('featured','generel','business','sports','technology','health','travel',
+        'entertainment','politics','style'));
     }
 
     public function category()
