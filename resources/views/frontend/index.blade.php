@@ -80,8 +80,17 @@
 	        </div>
 
 		        <div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">
-	    	    	<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">HEALTH</span></h3>
-	        	    <img src="images/basketball-95607_1280-392x272.jpg" /><img src="images/beauty-666605_1920-392x272.jpg" /><img src="images/drone-674238_1280-392x272.jpg" /><img src="images/football-622873_1280-300x205.jpg" /><img src="images/headphones-15600_1280-392x272.jpg" />
+	    	    	<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">BUSINESS</span></h3>
+
+                    <div class="flex">
+                        @foreach ($business->take(5) as $busns)
+                        <div>
+                            <a href="{{ route('article.read',$busns->slug) }}"><img src="{{ asset('images/posts/'.$busns->image) }}" /></a>
+                        </div>
+                        @endforeach
+                    </div>
+
+
 		        </div>
 
 	        <div class="row">

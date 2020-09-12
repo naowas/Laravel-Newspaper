@@ -94,8 +94,16 @@ h4{
 .fashion img{
 	margin-left:-15px;}
 .image-gallery img{
-	width:18.7%;
-	margin-right:10px;}
+	width:100%;
+}
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 -5px;
+}
+.flex div{
+    padding: 0 5px;
+}
 
 .social-icon{
 	background: #249bc6;
