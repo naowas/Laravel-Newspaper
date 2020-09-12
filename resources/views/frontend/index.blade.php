@@ -2,107 +2,81 @@
 @section('content')
 
 	<div class="wrapper">
+        @if($featured->count()>0)
 		<div class="row">
+            @foreach ($featured as $key=>$feature)
+            @if($key == 0)
 			<div class="col-md-6">
-	    		<a href="#"><img src="images/fireman-100722_1280-800x445.jpg" width="100%" /></a>
-	            <span class="caption">Lorem ipsum dolor sit amet</span>
-	    	</div>
+                <div class="relative">
+                    <a href="{{ route('article.read',$feature->slug) }}"><img src="{{ asset('images/posts/'.$feature->image) }}" width="100%" />
+	                <span class="caption">{{ $feature->title }}</span></a>
+                </div>
+
+            </div>
+             @endif
+             @endforeach
 	    	<div class="col-md-6">
 	    		<div class="row">
+                @foreach ($featured as $key=>$feature)
+                @if($key > 0 && $key < 3)
 	        		<div class="col-md-6">
-	        	    	<a href="#"><img src="images/bride-301814_1280-392x272.jpg" width="100%" height="162" /></a>
-			            <span class="caption">Lorem ipsum dolor sit amet</span>
+	        	<div class="relative">
+                    <a href="{{ route('article.read',$feature->slug) }}"><img src="{{ asset('images/posts/'.$feature->image) }}" width="100%" />
+	                <span class="caption">{{ $feature->title }}</span></a>
+                </div>
 	        	    </div>
-	        	    <div class="col-md-6">
-	        	    	<a href="#"><img src="images/sea-418742_1920-392x272.jpg" width="100%" height="162" /></a>
-			            <span class="caption">Lorem ipsum dolor sit amet</span>
-	        	    </div>
+                     @endif
+                    @endforeach
 	        	</div>
-	        	<div class="row" style="margin-top:30px;">
+                <div class="row" style="margin-top:30px;">
+                 @foreach ($featured as $key=>$feature)
+                 @if($key > 3 && $key < 6)
 	        		<div class="col-md-6">
-	        	    	<a href="#"><img src="images/kayaking-569282_1280-392x272.jpg" width="100%" height="162" /></a>
-			            <span class="caption">Lorem ipsum dolor sit amet</span>
+	        	<div class="relative">
+                    <a href="{{ route('article.read',$feature->slug) }}"><img src="{{ asset('images/posts/'.$feature->image) }}" width="100%" />
+	                <span class="caption">{{ $feature->title }}</span></a>
+                </div>
 	        	    </div>
-	        	    <div class="col-md-6">
-	        	    	<a href="#"><img src="images/clouds-sky-stadium-4516-392x272.jpg" width="100%" height="162" /></a>
-	                    <span class="caption">Lorem ipsum dolor sit amet</span>
-	        	    </div>
+                     @endif
+                    @endforeach
 	        	</div>
 	    	</div>
 		</div>
-
+        @endif
 	    <div class="row" style="margin-top:30px;">
 	    	<div class="col-md-8">
 	        <div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px;">
 	        	<div class="col-md-12">
-	        		<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">HEALTH</span></h3>
+	        		<h3 style="border-bottom:3px solid #81d742; padding-bottom:5px;"><span style="padding:6px 12px; background:#81d742;">NEWS</span></h3>
 	        	</div>
 	        	<div class="col-md-6">
-	            	<img src="images/coffee-563797_1280-390x205.jpg" width="100%" style="margin-bottom:15px;" />
-	        		<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-	            </div>
+                    @foreach ($generel as $key=>$gnrl)
+                    @if($key==0)
+                    <a href="{{ route('article.read',$gnrl->slug) }}"><img src="{{ asset('images/posts/'.$gnrl->image) }}" width="100%" style="margin-bottom:15px;"/></a>
+                    <h3><a href="{{ route('article.read',$gnrl->slug) }}">{{ $gnrl->title }}</a></h3>
+                    <p align="justify">{!! substr($gnrl->description,0,300) !!}</p> <a href="{{ route('article.read',$gnrl->slug) }}">Read more &raquo;</a>
+                    @endif
+                    @endforeach
+                </div>
+
 	            <div class="col-md-6">
-	            	<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
+                    @foreach ($generel as $key=>$gnrl)
+                     @if($key>0 && $key<6)
+	              	<div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
 		            	<div class="col-md-4">
 	                    	<div class="row">
-	    	            		<img src="images/mosquito-542156_1280-392x272.jpg" width="100%" />
+                                <a href="{{ route('article.read',$gnrl->slug) }}"><img src="{{ asset('images/posts/'.$gnrl->image) }}" width="100%" /></a>
 	        	        	</div>
 	                    </div>
 	            	    <div class="col-md-8">
 	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
+	                			<h4><a href="{{ route('article.read',$gnrl->slug) }}">{{ $gnrl->title }}</a></h4>
 	                		</div>
-	                    </div>
+                        </div>
 	                </div>
-	                <div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row">
-	    	            		<img src="images/solar-eclipse-152834_1280-392x272.png" width="100%" />
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	                <div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row">
-	    	            		<img src="images/yummy-333666_1280-392x272.jpg" width="100%" />
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	                <div class="row" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row">
-	    	            		<img src="images/relay-race-655353_1280-390x205.jpg" width="100%" />
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	                <div class="row" style="padding-bottom:15px;">
-		            	<div class="col-md-4">
-	                    	<div class="row">
-	    	            		<img src="images/relay-race-655353_1280-390x205.jpg" width="100%" />
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	            </div>
+                     @endif
+                    @endforeach
+	         </div>
 	        </div>
 
 		        <div class="col-md-12 image-gallery" style="border:1px solid #ccc; padding:15px 15px 30px 15px; margin-top:30px; margin-bottom:30px;">

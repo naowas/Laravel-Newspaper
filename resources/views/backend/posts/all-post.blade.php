@@ -4,15 +4,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 title">
-      <h1><i class="fa fa-bars"></i> Add New Posts <button class="btn btn-sm btn-default">Add New</button></h1>
+      <h1><i class="fa fa-bars"></i> All Posts <a href="{{ route('admin.post') }}" class="btn btn-sm btn-default">Add New</a></h1>
     </div>
     <div class="search-div">
       <div class="col-sm-9">
-        All(6) | <a href="#">Published (6)</a>
+        All ({{ $total_count }}) | <a href="#">Published({{ $published }})</a>
       </div>
 
       <div class="col-sm-3">
-        <input type="text" id="search" name="search" class="form-control" placeholder="Search Posts">
+        <input type="text" id="search" class="form-control" placeholder="Search Posts">
       </div>
     </div>
 
@@ -28,13 +28,13 @@
 		</select>
         </div>
 
-        <div class="col-sm-1">
+        <div class="col-sm-7">
           <div class="row">
             <button class="btn btn-default">Apply</button>
           </div>
         </div>
 
-      <div class="col-sm-3">
+      <div class="col-sm-3 text-right">
       {{ $all_post->links() }}
       </div>
     </div>
@@ -79,7 +79,7 @@
 
 
 
-      <div class="col-sm-3 col-sm-offset-6">
+      <div class="col-sm-12 text-right">
      {{ $all_post->links() }}
       </div>
     </div>

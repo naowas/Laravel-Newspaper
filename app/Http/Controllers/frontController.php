@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Settings;
-
+use Illuminate\Support\Facades\DB;
 
 class frontController extends Controller
 {
@@ -36,7 +36,9 @@ class frontController extends Controller
 
     public function index()
     {
-        return view('frontend.index');
+        $featured = DB::table('posts')->where('category_id', 'like', '%9%' )->orderBy('id','desc')->get();
+        $generel = DB::table('posts')->where('category_id', 'like', '%10%' )->orderBy('id','desc')->get();
+        return view('frontend.index',compact('featured','generel'));
     }
 
     public function category()

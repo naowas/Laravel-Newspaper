@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'frontController@index');
 Route::get('category', 'frontController@category');
 Route::get('post', 'frontController@post');
+Route::get('article/{slug}', 'frontController@article')->name('article.read');
 
 route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'adminController@index')->name('admin.index');

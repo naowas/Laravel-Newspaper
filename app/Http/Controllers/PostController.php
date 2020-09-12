@@ -24,7 +24,9 @@ class PostController extends Controller
             $post->category_id = $postcat;
             $postcategories = [];
         }
-        return view('backend.posts.all-post', compact('all_post'));
+        $published = DB::table('posts')->where('status','publish')->count();
+        $total_count = DB::table('posts')->count();
+        return view('backend.posts.all-post', compact('all_post','published','total_count'));
 
     }
     public function createPost()
