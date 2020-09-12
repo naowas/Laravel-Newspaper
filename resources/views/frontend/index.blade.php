@@ -97,115 +97,64 @@
 	        	<div class="col-md-6">
 	            <div class="col-md-12" style="border:1px solid #ccc; padding-bottom:30px;">
 	            	<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:20px 10px; margin-bottom:10px;">
-	                <h3 style="border-bottom:3px solid #b952c8; padding-bottom:5px;"><span style="padding:6px 12px; background:#b952c8;">FASHION</span></h3>
-	            		<img src="images/model-600225_1280-390x205.jpg" width="100%" style="margin-bottom:15px;" />
-	        			<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
+	                <h3 style="border-bottom:3px solid #b952c8; padding-bottom:5px;"><span style="padding:6px 12px; background:#b952c8;">SPORTS</span></h3>
+	            	@foreach ($sports as $key=>$sport)
+                    @if($key==0)
+                    <a href="{{ route('article.read',$sport->slug) }}"><img src="{{ asset('images/posts/'.$sport->image) }}" width="100%" style="margin-bottom:15px;"/></a>
+                    <h3><a href="{{ route('article.read',$sport->slug) }}">{{ $sport->title }}</a></h3>
+                    <p align="justify">{!! substr($sport->description,0,300) !!}</p> <a href="{{ route('article.read',$sport->slug) }}">Read more &raquo;</a>
+                    @endif
+                    @endforeach
 	            	</div>
-	                <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row fashion">
-	    	            		<img src="images/beauty-666605_1920-392x272.jpg" width="100%" />
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	                <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row fashion">
-	    	            		<img src="images/window-213496_1280-392x272.jpg" width="100%"/>
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	                <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row fashion">
-	    	            		<img src="images/relaxed-498245_1280-392x272.jpg" width="100%"/>
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
+                    @foreach ($sports as $key=>$sport)
+                    @if($key>0 && $key<5)
 	                <div class="col-md-12" style="padding-bottom:10px;">
 		            	<div class="col-md-4">
 	                    	<div class="row fashion">
-	    	            		<img src="images/relaxed-498245_1280-392x272.jpg" width="100%"/>
+                    <a href="{{ route('article.read',$sport->slug) }}"><img src="{{ asset('images/posts/'.$sport->image) }}" width="100%"/></a>
 	        	        	</div>
 	                    </div>
 	            	    <div class="col-md-8">
 	                    	<div class="row">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
+	                			<h4><a href="{{ route('article.read',$sport->slug) }}">{{ $sport->title }}</a></h4>
 	                		</div>
 	                    </div>
-	                </div>
-	            </div></div>
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+            </div>
 	        	<div class="col-md-6">
 	            <div class="col-md-12" style="border:1px solid #ccc; padding-bottom:30px;">
 	            	<div class="col-md-12" style="border-bottom:1px solid #ccc; padding:20px 10px; margin-bottom:10px;">
-	                <h3 style="border-bottom:3px solid #d95757; padding-bottom:5px;"><span style="padding:6px 12px; background:#d95757;">SPORTS</span></h3>
-	            		<img src="images/relay-race-655353_1280-390x205.jpg" width="100%" style="margin-bottom:15px;" />
-	        			<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>Read more <a href="#"><span class="glyphicon glyphicon-chevron-right"></span><span class="glyphicon glyphicon-chevron-right"></span></a>
-	            	</div>
+	                <h3 style="border-bottom:3px solid #d95757; padding-bottom:5px;"><span style="padding:6px 12px; background:#d95757;">TECHNOLOGY</span></h3>
+	            	@foreach ($technology as $key=>$techno)
+                    @if($key==0)
+                    <a href="{{ route('article.read',$techno->slug) }}"><img src="{{ asset('images/posts/'.$techno->image) }}" width="100%" style="margin-bottom:15px;"/></a>
+                    <h3><a href="{{ route('article.read',$techno->slug) }}">{{ $techno->title }}</a></h3>
+                    <p align="justify">{!! substr($techno->description,0,300) !!}</p> <a href="{{ route('article.read',$techno->slug) }}">Read more &raquo;</a>
+                    @endif
+                    @endforeach
+                    </div>
+                    @foreach ($technology as $key=>$techno)
+                    @if($key>0 && $key<5)
 	                <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
 		            	<div class="col-md-4">
 	                    	<div class="row fashion">
-	    	            		<img src="images/swimmer-583667_1280-392x272.jpg" width="100%"/>
+                    <a href="{{ route('article.read',$techno->slug) }}"><img src="{{ asset('images/posts/'.$techno->image) }}" width="100%"/></a>
 	        	        	</div>
 	                    </div>
 	            	    <div class="col-md-8">
 	                    	<div class="row" style="padding-left:0px;">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
+	                			<h4><a href="{{ route('article.read',$techno->slug) }}">{{ $techno->title }}</a></h4>
 	                		</div>
-	                    </div>
-	                </div>
-	                <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row fashion">
-	    	            		<img src="images/basketball-95607_1280-392x272.jpg" width="100%" />
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row" style="padding-left:0px;">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	                <div class="col-md-12" style="border-bottom:1px solid #ccc; padding-bottom:10px; margin-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row fashion">
-	    	            		<img src="images/football-622873_1280-300x205.jpg" width="100%" />
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row" style="padding-left:0px;">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	                <div class="col-md-12" style="padding-bottom:10px;">
-		            	<div class="col-md-4">
-	                    	<div class="row fashion">
-	    	            		<img src="images/relay-race-655353_1280-392x272.jpg" width="100%" />
-	        	        	</div>
-	                    </div>
-	            	    <div class="col-md-8">
-	                    	<div class="row" style="padding-left:0px;">
-	                			<h4>Lorem ipsum dolor sit amet</h4>
-	                		</div>
-	                    </div>
-	                </div>
-	            </div></div>
+                        </div>
+
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+            </div>
 
 	        <div class="col-md-12">
 	        	<div class="col-md-12" style="border:1px solid #ccc; padding:15px 15px 30px 0px; margin-top:30px;">
