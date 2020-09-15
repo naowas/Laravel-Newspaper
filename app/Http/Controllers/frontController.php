@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Post;
 use App\Settings;
 use Illuminate\Support\Facades\DB;
 
@@ -49,16 +50,35 @@ class frontController extends Controller
         return view('frontend.index',compact('featured','generel','business','sports','technology','health','travel',
         'entertainment','politics','style'));
     }
-
-    public function category()
+    public function more_news()
     {
-        return view('frontend.category');
-
-    }
-    public function post()
-    {
-        return view('frontend.article');
-
+        $business = DB::table('posts')->where('category_id', 'like', '%2%' )->orderBy('id','desc')->get();
+        $health = DB::table('posts')->where('category_id', 'like', '%8%' )->orderBy('id','desc')->get();
+        return view('frontend.more_news',compact('business','health'));
     }
 
+
+    public function category($slug)
+    {
+        $cat = DB::table('categories')->where('slug', $slug)->first();
+        $posts = DB::table('posts')->where('category_id', 'like', '%'.$cat->id.'%')->get();
+        $business = DB::table('posts')->where('category_id', 'like', '%2%')->orderBy('id', 'desc')->get();
+
+        $health = DB::table('posts')->where('category_id', 'like', '%8%')->orderBy('id', 'desc')->get();
+
+        return view('frontend.category',compact('cat','posts','health','business'));
+
+    }
+    public function article($slug)
+    {
+        $business = DB::table('posts')->where('category_id', 'like', '%2%')->orderBy('id', 'desc')->get();
+        $health = DB::table('posts')->where('category_id', 'like', '%8%')->orderBy('id', 'desc')->get();
+
+        // $single_post = DB::table('posts')->where('slug',$slug)->first();
+        $single_post = Post::where('slug',$slug)->first();
+        $related_post = DB::table('posts')->where('category_id', 'like', '%'.$single_post->category_id.'%')->get();
+
+        return view('frontend.article',compact('single_post','business','health','related_post'));
+
+    }
 }

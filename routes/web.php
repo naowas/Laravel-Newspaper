@@ -17,6 +17,7 @@ Route::get('/', 'frontController@index');
 Route::get('category', 'frontController@category');
 Route::get('post', 'frontController@post');
 Route::get('article/{slug}', 'frontController@article')->name('article.read');
+Route::get('category/{slug}', 'frontController@category')->name('article.category');
 
 route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'adminController@index')->name('admin.index');
