@@ -21,8 +21,7 @@
                         @foreach ($related_post->take(3) as $related)
 						<div class="col-md-4">
                             <a href="{{ route('article.read',$related->slug) }}"><img style="height: 200px" src="{{ asset('images/posts/'.$related->image) }}" width="100%" style="margin-bottom:15px;" /></a>
-                            <a href="{{ route('article.read',$related->slug) }}""> <h4 style="color: black">{{ $related->title }}</h4>
-</a>
+                            <a href="{{ route('article.read',$related->slug) }}""> <h4 style="color: black">{{ $related->title }}</h4></a>
 							<p align="justify">{!! substr($related->description,0,100) !!}<a href="{{ route('article.read',$related->slug) }}">... Read more &raquo;</a></p>
                         </div>
                         @endforeach

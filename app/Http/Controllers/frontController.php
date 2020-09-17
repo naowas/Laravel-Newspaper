@@ -61,7 +61,9 @@ class frontController extends Controller
     public function category($slug)
     {
         $cat = DB::table('categories')->where('slug', $slug)->first();
+        //dd($cat);
         $posts = DB::table('posts')->where('category_id', 'like', '%'.$cat->id.'%')->get();
+       // dd($posts);
         $business = DB::table('posts')->where('category_id', 'like', '%2%')->orderBy('id', 'desc')->get();
 
         $health = DB::table('posts')->where('category_id', 'like', '%8%')->orderBy('id', 'desc')->get();
