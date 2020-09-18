@@ -27,11 +27,13 @@ class frontController extends Controller
             $icons[] = $icon;
         }
 
+        $latest_news = DB::table('posts')->where('ststus', 'publish')->first();
         view()->share([
             'categories' => $categories,
             'settings' => $settings,
             'a' => $a,
             'icons' => $icons,
+            'latest_news' => $latest_news,
         ]);
     }
 

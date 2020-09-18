@@ -7,7 +7,7 @@
                 <span class="day">{{ date('l,M d,Y') }}</span>
             </div>
             <div class="col-md-9">
-                <span class="latest">Latest: </span> <a href="#">Wireless Headphones are now on Market</a>
+                <span class="latest">Latest: </span> <a href="{{ route('article.read',$latest_news->slug) }}">{{ $latest_news->title }}</a>
             </div>
         </div>
         <div class="col-md-3 top-social">
