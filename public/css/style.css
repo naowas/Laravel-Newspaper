@@ -172,3 +172,30 @@ h4{
     left: 0;
     background: rgba(0, 0, 0, 0.7);
 }
+
+a{
+    text-decoration: none !important;
+}
+
+#search-output{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    background: #fff;
+    top: 100%;
+    left: 0;
+    display: none;
+    z-index:2 ;
+    border: 3px solid #249bc6;
+}
+.search-result{
+    list-style: none;
+}
+.search-result{
+    padding: 0 0 5px;
+    display: block;
+    color: #333;
+}
+

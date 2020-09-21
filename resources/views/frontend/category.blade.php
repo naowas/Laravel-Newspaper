@@ -1,4 +1,7 @@
 @extends('frontend.master')
+@section('title')
+<title>{{ $cat->category_name }} || NewsPaper </title>
+@endsection
 @section('content')
 
 	<div class="wrapper">

@@ -1,4 +1,7 @@
 @extends('frontend.master')
+@section('title')
+<title>{{ $single_post->title }} || NewsPaper </title>
+@endsection
 @section('content')
 
 	<div class="wrapper">

@@ -62,7 +62,8 @@
             </nav>
         </div>
         <div class="col-md-2 search">
-            <input type="search" class="form-control" /><span class="glyphicon glyphicon-search btn"></span>
+            <input type="search" id="search_content" class="form-control" /><span class="glyphicon glyphicon-search btn"></span>
+            <div id="search-output"></div>
         </div>
     </div>
     {{-- Header end here --}}
@@ -114,10 +115,6 @@
         </div>
         <div class="col-md-4">
             <h3 style="border-bottom:2px solid #ccc;"><span style="border-bottom:2px solid #f00;">Contact Us</span></h3>
-            {{-- <span class="name">
-                <font color="#e03521">COLOR</font>
-                <font color="#fff">MAG</font>
-            </span><br /> --}}
             Follow us at:<br /><br />
             @foreach($a as $key=> $b)
 
@@ -133,6 +130,27 @@
     </div>
 
     @include('frontend.partials.script')
+
+
+    <script>
+        $('#search_content').keyup(function(){
+            var text = $('#search_content').val();
+            if(text.length < 1){
+                $('#search_output').hide();
+                return false;
+            }else{
+                $.ajax({
+                    type : "get",
+                    url : "{{url('search-content')}}",
+                    data : {text:text},
+                    success:function(res){
+                        $('#search-output').show();
+                        $('#search-output').html(res);
+                    }
+                })
+            }
+        });
+    </script>
 </body>
 
 </html>
