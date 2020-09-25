@@ -79,6 +79,8 @@ class frontController extends Controller
 
         // $single_post = DB::table('posts')->where('slug',$slug)->first();
         $single_post = Post::where('slug', $slug)->first();
+        $views = $single_post->views;
+        DB::table('posts')->where('slug',$slug)->update(['views'=>$views+1]);
         $related_post = DB::table('posts')->where('category_id', 'like', '%' . $single_post->category_id . '%')->get();
 
         return view('frontend.article', compact('single_post', 'business', 'health', 'related_post'));
